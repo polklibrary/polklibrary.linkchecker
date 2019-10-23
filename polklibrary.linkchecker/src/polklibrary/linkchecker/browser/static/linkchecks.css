@@ -1,0 +1,42 @@
+.link-check {
+    display:inline-block;
+    color: #333;
+}
+a.link-check {
+    display:inline-block;
+    color: #34baeb;
+}
+.link-check[data-code="pass"] {
+    color: green;
+    font-weight: bold;
+}
+.link-check[data-code="warn"] {
+    color: orange;
+    font-weight: bold;
+}
+.link-check[data-code="error"] {
+    color: red;
+    font-weight: bold;
+}
+.link-message {
+    width: 200px;
+}
+.link-status {
+    width: 60px;
+}
+
+.link-check-help{
+    border: 1px solid #999;
+    color: #666;
+    padding: 10px;
+    font-style: italic;
+    margin-bottom: 15px;
+    background-color: #eee;
+    display: inline-block;
+}
+
+.link-help-labels * {
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: underline;    
+}

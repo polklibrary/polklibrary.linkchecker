@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone"
+	  lang="en">
+<body>
+
+	<metal:block fill-slot="style_slot">
+        <link type="text/css" rel="stylesheet" href="${view/portal/absolute_url}/++resource++polklibrary.linkchecker/linkchecks.css" />
+	</metal:block>
+    
+
+	<metal:block fill-slot="javascript_head_slot">
+	</metal:block>
+    
+    
+    <metal:content-title fill-slot="content-title" >
+        <h1 class="documentFirstHeading">Utility: Link Checker</h1>
+    </metal:content-title>
+        
+	<metal:content-description fill-slot="content-description"></metal:content-description>
+
+	<metal:content fill-slot="content-core">
+        
+        <div id="link-checker-view" class="column">
+
+            <h2>Checking: <a href="${context/absolute_url}">${context/Title}</a></h2>
+
+            <div class="link-check-help">
+                <label>Common Protocol Codes</label>
+                <div>200 : Connection good</div>
+                <div>301-307 : Redirection detected</div>
+                <div>400+ : Connecton issues (<a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">see protocol codes</a>)</div>
+            </div>
+
+            <div class="link-help-labels">
+                <span class="link-check link-message">Status</span>
+                <span class="link-check link-status">Code</span>
+                <span class="link-check link-url">URL</span>
+            </div>
+            <div tal:repeat="link view/links">
+                <span class="link-check link-message" data-code="${link/style}" >${link/message}</span>
+                <span class="link-check link-status" data-code="${link/style}" >${link/status}</span>
+                <a class="link-check link-url" href="${link/url}">${link/url}</a>
+            </div>
+
+        </div>
+        
+	</metal:content>
+
+</body>
+</html>
