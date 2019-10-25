@@ -68,7 +68,7 @@ class LinkCheckerView(BrowserView):
                 response.close()
             except urllib2.URLError, e:
                 link['status'] = 408
-                link['message'] = "ERROR: Connection issue"
+                link['message'] = "ERROR: " + str(e)
                 link['style'] = "error"
                 try: 
                     response.close()
