@@ -23,13 +23,15 @@ class LinkCheckerView(BrowserView):
             div = soup.find("div", {"id" : "content-container"})
             if div:
                 for link in div.findAll('a'):
-                    if link != None and not link.startswith('#') and not link.startswith('/') and not link.startswith('tel:') and not link.startswith('mailto:'):
-                        self.links.append({
-                            'url': link.get('href'),
-                            'status': 0,
-                            'message': "UNKNOWN: Utility failed...",
-                            'style': "unknown",
-                        })
+                    if link != None:
+                        href = link.get('href')
+                        if not href.startswith('#') and not href.startswith('/') and not href.startswith('tel:') and not href.startswith('mailto:'):
+                            self.links.append({
+                                'url': href,
+                                'status': 0,
+                                'message': "UNKNOWN: Utility failed...",
+                                'style': "unknown",
+                            })
             response.close()
         except urllib2.URLError, e:
             try: 
