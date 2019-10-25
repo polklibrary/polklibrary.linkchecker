@@ -24,7 +24,7 @@ class LinkCheckerView(BrowserView):
             if div:
                 for link in div.findAll('a'):
                     if link:
-                        if not link.startswith('#') or not link.startswith('/') or not link.startswith('tel:') or not link.startswith('mailto:'):
+                        if link != None or not link.startswith('#') or not link.startswith('/') or not link.startswith('tel:') or not link.startswith('mailto:'):
                             self.links.append({
                                 'url': link.get('href'),
                                 'status': 0,
