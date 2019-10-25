@@ -22,7 +22,7 @@ class LinkCheckerView(BrowserView):
             soup = BeautifulSoup(response)
             div = soup.find("div", {"id" : "content-container"})
             for link in div.findAll('a'):
-                if link != '#' or not link.startswith('tel:') or not link.startswith('mailto:'):
+                if not link.startswith('#') or not link.startswith('/') or not link.startswith('tel:') or not link.startswith('mailto:'):
                     self.links.append({
                         'url': link.get('href'),
                         'status': 0,
